@@ -7,35 +7,64 @@
     $opcion = $_REQUEST['opcion'];
 
     if ($opcion == 'create') {
-      $nombre = $_REQUEST['nombre'];
-      $descripcion = $_REQUEST['descripcion'];
-      $valor = $_REQUEST['valor'];
+        $nombre = $_REQUEST['nombre'];
+        $descripcion = $_REQUEST['descripcion'];
+        $valor = $_REQUEST['valor'];
 
-      $dir_subida = '../Public/imagenes/Productos/';
-      $fichero_subido = $dir_subida.basename($_FILES['foto']['name']);
-      if (move_uploaded_file($_FILES['foto']['tmp_name'], $fichero_subido)) {
-  		    // echo "El fichero es válido y se subió con éxito.\n";
-  		} else {
-  		    // echo "¡Posible ataque de subida de ficheros!\n";
-  		}
-      store($nombre, $descripcion, $fichero_subido, $valor);
-    }
+        $dir_subida = '../Public/imagenes/Productos/';
 
-    if ($opcion == 'edit') {
-      $id = $_REQUEST['id'];
-      $nombre = $_POST['nombre'];
-  		$descripcion = $_POST['descripcion'];
-      $valor = $_POST['valor'];
+        //tamaño de la imagen
+        if($_FILES['foto']['size']< 10000000){
+          // extension de la imagen
+          $ext = explode(".",$_FILES['foto']['name']);
+          if(strtolower($ext[1]) == "png" || strtolower($ext[1] == "jpg") || strtolower($ext[1] == "jpeg") || strtolower($ext[1] == "tif")){
+            $fichero_subido = $dir_subida.basename($_FILES['foto']['name']);
+            if (move_uploaded_file($_FILES['foto']['tmp_name'], $fichero_subido)) {
+              store($nombre, $descripcion, $fichero_subido, $valor);
+            }else {
+              $resultado = "No se pudo almacenar";
+              header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+            }
+          }else{
+           $resultado = "La archivo no es permitido, las extensiones permitidas son: png, jpg, jpeg y tif";
+           header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+          }
+        }else{
+          $resultado = "El archivo es demasiado grande";
+          header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+        }
+      }
 
-  		$dir_subida = '../public/imagenes/Productos/';
-  		$fichero_subido = $dir_subida.basename($_FILES['foto']['name']);
-  		if (move_uploaded_file($_FILES['foto']['tmp_name'], $fichero_subido)) {
-  		    // echo "El fichero es válido y se subió con éxito.\n";
-  		} else {
-  		    // echo "¡Posible ataque de subida de ficheros!\n";
-  		}
-  		edit($id, $nombre,$descripcion,$fichero_subido, $valor);
-    }
+
+      if ($opcion == 'edit') {
+        $id = $_REQUEST['id'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $valor = $_POST['valor'];
+
+        $dir_subida = '../public/imagenes/Productos/';
+
+        //tamaño de la imagen
+        if($_FILES['foto']['size']< 10000000){
+          // extension de la imagen
+          $ext = explode(".",$_FILES['foto']['name']);
+          if(strtolower($ext[1]) == "png" || strtolower($ext[1] == "jpg") || strtolower($ext[1] == "jpeg") || strtolower($ext[1] == "tif")){
+            $fichero_subido = $dir_subida.basename($_FILES['foto']['name']);
+            if (move_uploaded_file($_FILES['foto']['tmp_name'], $fichero_subido)) {
+                edit($id, $nombre, $descripcion, $fichero_subido, $valor);
+            }else {
+              $resultado = "No se pudo almacenar";
+              header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+            }
+          }else{
+           $resultado = "La archivo no es permitido, las extensiones permitidas son: png, jpg, jpeg y tif";
+           header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+         }
+        }else{
+          $resultado = "El archivo es demasiado grande";
+          header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+        }
+      }
 
     if($opcion === 'delete'){
       $id = $_REQUEST['id'];
