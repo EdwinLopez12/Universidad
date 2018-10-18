@@ -22,15 +22,15 @@
             store($nombre, $email, $password, $fichero_subido);
           } else {
             $resultado = "No se pudo almacenar";
-            header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+            header ('Location: ../Vistas/Usuario/index.php?respuesta='.$resultado.'');
           }
         }else{
           $resultado = "La archivo no es permitido, las extensiones permitidas son: png, jpg, jpeg y tif";
-          header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+          header ('Location: ../Vistas/Usuario/index.php?respuesta='.$resultado.'');
         }
       }else{
         $resultado = "El archivo es demasiado grande";
-        header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+        header ('Location: ../Vistas/Usuario/index.php?respuesta='.$resultado.'');
       }
     }
 
@@ -50,15 +50,15 @@
             edit($id, $nombre, $email, $password, $fichero_subido);
           } else {
             $resultado = "No se pudo almacenar";
-            header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+            header ('Location: ../Vistas/Usuario/index.php?respuesta='.$resultado.'');
           }
         }else{
           $resultado = "La archivo no es permitido, las extensiones permitidas son: png, jpg, jpeg y tif";
-          header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+          header ('Location: ../Vistas/Usuario/index.php?respuesta='.$resultado.'');
         }
       }else{
         $resultado = "El archivo es demasiado grande";
-        header ('Location: ../Vistas/Producto/index.php?respuesta='.$resultado.'');
+        header ('Location: ../Vistas/Usuario/index.php?respuesta='.$resultado.'');
       }
     }
 
