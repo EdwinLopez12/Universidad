@@ -97,15 +97,18 @@
   	$listadoUsuarios = $usuarios->show($id);
   	foreach ($listadoUsuarios as $usuario) {
   		echo "<div class='form-group'>";
-  		echo "<label class=''>Nombre Usuario</label>";
-  		echo "<input type='text' class='form-control' readonly value='".utf8_encode($usuario['nombre_usuario'])."'/>";
+    		echo "<label class=''>Nombre Usuario</label>";
+    		echo "<input type='text' class='form-control' readonly value='".utf8_encode($usuario['nombre_usuario'])."'/>";
+      echo "</div>";
 
-  		echo "<label class=''>Descripción Usuario</label>";
-  		echo "<input type='email' class='form-control' readonly value='".$usuario['email']."'/>";
+      echo "<div class='form-group'>";
+    		echo "<label class=''>Email</label>";
+    		echo "<input type='email' class='form-control' readonly value='".$usuario['email']."'/>";
+      echo "</div>";
 
-      echo "<label class=''>Foto</label>";
-      echo "<br /><img src='../".$usuario['foto']."' height='50px' width='50px'>";
-
+      echo "<div class='form-group'>";
+        echo "<label class=''>Foto</label>";
+        echo "<br /><img src='../".$usuario['foto']."' height='50px' width='50px'>";
       echo "</div>";
   	}
   }
