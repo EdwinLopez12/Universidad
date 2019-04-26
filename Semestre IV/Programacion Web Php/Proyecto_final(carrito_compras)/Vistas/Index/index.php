@@ -23,7 +23,7 @@
         <ul class="navbar-nav mt-2 mt-lg-0 ">
 
           <li class="nav-item">
-            <a class="nav-link" data-toggle='modal' data-target='#ModalContainer' id="iniciar_sesion">Iniciar sesion</a>
+            <a class="nav-link" data-toggle='modal' data-target='#ModalContainer' id="iniciar_sesion" style="cursor:pointer;">Iniciar sesion</a>
           </li>
         </ul>
       </div>

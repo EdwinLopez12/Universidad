@@ -7,7 +7,7 @@
     require_once '../Modelos/Usuario.php';
 
     $opcion = $_REQUEST['opcion'];
-    date_default_timezone_set('America/Bogota');
+    date_default_timezone_set('America/Bogota'); //Zona de tiempo
 
     if($opcion == 'create'){
       $nombre = $_REQUEST['nombre'];
@@ -17,10 +17,10 @@
       $password = $_REQUEST['password'];
       $password2 = $_REQUEST['password2'];
       $rol = $_REQUEST['rol'];
-      $horario = date('y_m_d_H_i_s_');
+      $horario = date('y_m_d_H_i_s_'); //formato de fecha recibida
 
       if($password == $password2){
-          if($rol == 'no'){
+          if($rol == 'no'){ //determina el tipo de usuario que hace el registro
             $error = "Debe seleccionar un rol para el usuario a crear";
             header ('Location: ../Vistas/Admin/Usuarios/index.php?error='.$error.'');
           }else{
@@ -29,7 +29,7 @@
             if($_FILES['foto']['size']< 10000000){
               //extension de la imagen
               $ext = explode(".",$_FILES['foto']['name']);
-              if(strtolower($ext[1]) == "png" || strtolower($ext[1] == "jpg") || strtolower($ext[1] == "jpeg") || strtolower($ext[1] == "tif")){
+              if(strtolower($ext[1]) == "png" || strtolower($ext[1] == "jpg") || strtolower($ext[1] == "jpeg") || strtolower($ext[1] == "tif")){ //tipo de archivo aceptado
                 $fichero_subido = $dir_subida.$horario.basename($_FILES['foto']['name']);
                 if (move_uploaded_file($_FILES['foto']['tmp_name'], $fichero_subido)) {
                   store($nombre,$direccion, $telefono, $email, $password, $fichero_subido, $rol);
@@ -154,9 +154,6 @@
 
 
   }
-  /** usuarios
-   * 	id_usuario	nombre	direccion	telefono	email	password	foto	rol
-   */
 
   // Funciones
 
