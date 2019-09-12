@@ -4,7 +4,7 @@
 #Importar los paquetes necesarios
 
 import time
-#import numpy as np
+import numpy as np
 from random import randint
 
 def archivoU(r):
