@@ -1,4 +1,4 @@
-# Proyecto final de 3° corte
+# Proyecto final de 3° corte :basketball: :computer: :soccer:
 * Pequeño sistema basado en estruturas, el cúal permite crear jugadores y equipos, tanto de fútbol como baloncesto, permitiendo a la vez, calcular operaciones basicas como: equipo campeon, maximo anotador de puntos, mejor triplista. *
 ### Lenguaje
 ```
